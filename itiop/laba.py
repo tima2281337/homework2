@@ -197,7 +197,7 @@ def float_to_hex4(number):
 
 
 
-'''print(float_to_hex4("-123.5"))'''
+
 
 
 
@@ -253,7 +253,7 @@ def from_hex_to_float4(hex_num):
 
 
 
-print("hello world")
+
 
 
 
