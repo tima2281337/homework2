@@ -27,14 +27,13 @@ def to_base_r(n, r, precision=8):
     return result
 
 def from_baser(s, r=4):
-
     iop = float(s)
     packed_32 = struct.pack('!f', iop)
     hex_32 = ''.join(f'{byte:02X}' for byte in packed_32)
     return hex_32
 def frombase_r(s, r=6):
     iop = float(s)
-    packed_64 = struct.pack('!d', number)
+    packed_64 = struct.pack('!d', iop)
     hex_64 = ''.join(f'{byte:02X}' for byte in packed_64)
     return hex_64
 def from_base_r(s, r):
@@ -72,7 +71,7 @@ def float_to_hex8(number):
         mantis = 64 - mantis
         mantis = zero * mantis
         number = number + mantis
-        a = int(from_base_r(number, 2))
+        a = int(from_base_r(iop, 2))
         hex8 = frombase_r(iop)
         
     elif number[0] != "-":
@@ -182,6 +181,6 @@ def from_hex_to_float4(hex_num):
          dec_num = from_base_r (bin_num, 2)
     return dec_num
 
-b=""
+b="0.5"
 print(float_to_hex4(b))
-
+print(float_to_hex8(b))
