@@ -1,5 +1,5 @@
 import math
-
+import struct 
 def to_base_r(n, r, precision=8):
     if n == 0:
         return "0"
@@ -26,6 +26,17 @@ def to_base_r(n, r, precision=8):
 
     return result
 
+def from_baser(s, r=4):
+
+    iop = float(s)
+    packed_32 = struct.pack('!f', iop)
+    hex_32 = ''.join(f'{byte:02X}' for byte in packed_32)
+    return hex_32
+def frombase_r(s, r=6):
+    iop = float(s)
+    packed_64 = struct.pack('!d', number)
+    hex_64 = ''.join(f'{byte:02X}' for byte in packed_64)
+    return hex_64
 def from_base_r(s, r):
     parts = s.split(".")
 
@@ -43,6 +54,7 @@ def from_base_r(s, r):
     return integer_part + fractional_part
 
 def float_to_hex8(number):
+    iop = float(number)
     if number[0] == "-":
         number = number[1:]
         number = float(number)
@@ -61,7 +73,8 @@ def float_to_hex8(number):
         mantis = zero * mantis
         number = number + mantis
         a = int(from_base_r(number, 2))
-        a = to_base_r(a, 16)
+        hex8 = frombase_r(iop)
+        
     elif number[0] != "-":
         number = float(number)
         number = to_base_r(number, 2)
@@ -79,10 +92,13 @@ def float_to_hex8(number):
         mantis = zero * mantis
         number = number + mantis
         a = int(from_base_r(number, 2))
-        a = to_base_r(a, 16)
-    return a
+        hex8 = frombase_r(iop)
+        
+    return hex8
 
 def float_to_hex4(number):
+    
+    iop = float(number)
     if number[0] == "-":
         number = number[1:]
         number = float(number)
@@ -99,9 +115,8 @@ def float_to_hex4(number):
         zero = '0'
         mantis = 32 - mantis
         mantis = zero * mantis
-        number = number + mantis
-        a = int(from_base_r(number, 2))
-        a = to_base_r(a, 16)
+        number = number + mantis 
+        hex4= from_baser(iop)
     elif number[0] != "-":
         number = float(number)
         number = to_base_r(number, 2)
@@ -120,9 +135,12 @@ def float_to_hex4(number):
         number = number + mantis
         a = int(from_base_r(number, 2))
         a = to_base_r(a, 16)
-    return a
+        packed_32 = struct.pack('!f', iop)
+        hex4= from_baser(iop)
+    return hex4
 
 def from_hex_to_float8(hex_num):
+    
     f_n = hex_num[0]
     hex_num = from_base_r(hex_num, 16)
     hex_num = to_base_r(hex_num, 2)
@@ -165,5 +183,5 @@ def from_hex_to_float4(hex_num):
     return dec_num
 
 b=""
-print(from_hex_to_float8(b))
+print(float_to_hex4(b))
 
