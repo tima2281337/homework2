@@ -1,6 +1,6 @@
 import math
 
-def to_base_r(n, r, precision=5):
+def to_base_r(n, r, precision=8):
     if n == 0:
         return "0"
 
@@ -52,7 +52,7 @@ def float_to_hex8(number):
         number.pop(zap)
         number.pop(0)
         number = "".join(number)
-        exp = (zap - 1) + 1023
+        exp = (zap - 2) + 1023
         exp = to_base_r(exp, 2)
         number = "1" + exp + number
         mantis = len(number)
@@ -164,6 +164,6 @@ def from_hex_to_float4(hex_num):
          dec_num = from_base_r (bin_num, 2)
     return dec_num
 
-b="405FA70000000000"
+b=""
 print(from_hex_to_float8(b))
 
