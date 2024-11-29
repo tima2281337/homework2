@@ -13,7 +13,7 @@ def float_to_hex(number):
     return hex_32, hex_64
 
 # Пример использования
-number = -146.836
+number = 0.05
 hex_32, hex_64 = float_to_hex(number)
 
 print(f"Число: {number}")

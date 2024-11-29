@@ -181,6 +181,6 @@ def from_hex_to_float4(hex_num):
          dec_num = from_base_r (bin_num, 2)
     return dec_num
 
-b="0.5"
+b="0.05"
 print(float_to_hex4(b))
 print(float_to_hex8(b))
