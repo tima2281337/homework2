@@ -1,5 +1,6 @@
 import heapq
 import random
+import time
 
 def generate_random_graph(num_vertices, density=0.5, min_weight=1, max_weight=10):
     graph = {i: {} for i in range(num_vertices)}
@@ -57,17 +58,22 @@ def build_path(Parent, start, end):
         return "Путь не найден"
 
 # Пример использования
-num_vertices = 10
-density = 0.3
+num_vertices = 100000
+density = 10000
 min_weight = 1
-max_weight = 10
+max_weight = 1000000
 
 G = generate_random_graph(num_vertices, density, min_weight, max_weight)
 start, end = 0, num_vertices - 1  # Начальная и конечная вершины
 
-print("Сгенерированный граф:")
+'''print("Сгенерированный граф:")
 for vertex, edges in G.items():
-    print(f"{vertex}: {edges}")
+    print(f"{vertex}: {edges}")'''
 
+sart = time.monotonic_ns()
 path = dijkstra(G, start, end)
+finish = time.monotonic_ns()
+res = finish - sart
+
 print(f"Кратчайший путь из {start} в {end}: {path}")
+print('Время работы: ', res)
