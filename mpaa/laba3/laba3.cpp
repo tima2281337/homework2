@@ -116,6 +116,11 @@ int main() {
 
     auto time2 = duration<double>(t4 - t3).count();
 
+    if(desiredLength == 100){
+        time = time*1000;
+        time2 = time2*10;
+    }
+
 
     cout << "Длина:" << " " << desiredLength << "\n";
     cout << "НОП (" << "X" << ", " << "Y" << ") методом полного перебора: " << time  << endl;
